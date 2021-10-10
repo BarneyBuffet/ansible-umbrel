@@ -21,7 +21,7 @@ Install Ansible using the following guide: [Installation Guide » Installing Ans
 
 ### Clone Git Repository
 
-The repository can be either downloaded by a [zip file]() or the git clone command.
+The repository can be either downloaded by a zip file from the [releases page](https://github.com/BarneyBuffet/ansible-umbrel/releases) or the git clone command.
 
 ```bash
 git@github.com:BarneyBuffet/ansible-umbrel.git
