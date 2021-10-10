@@ -1,0 +1,7 @@
+
+# ansible-playbook 00-ansible.yaml -i ./inventory/hosts.ini --ask-become-pass
+- hosts: umbrel
+  gather_facts: no
+  become: yes
+  roles:
+    - role: ansible

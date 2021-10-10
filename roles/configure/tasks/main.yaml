@@ -1,0 +1,23 @@
+- name: Add .home to server path
+  lineinfile:
+    path: '/mnt/data/umbrel/scripts/start'
+    state: present
+    regexp: '^DEVICE_HOSTS='
+    line: 'DEVICE_HOSTS="http://${DEVICE_IP},http://${DEVICE_HOSTNAME}.{{ DOMAIN }},https://${DEVICE_HOSTNAME}.{{ DOMAIN }},http://${DEVICE_HOSTNAME},https://${DEVICE_HOSTNAME}"'
+  notify: server reboot
+
+- name: Add lnd alias
+  lineinfile:
+    path: '/mnt/data/umbrel/lnd/lnd.conf'
+    state: present
+    regexp: '^alias='
+    line: 'alias={{ LND_ALIAS }}'
+  notify: server reboot
+
+- name: Add lnd color
+  lineinfile:
+    path: '/mnt/data/umbrel/lnd/lnd.conf'
+    state: present
+    regexp: '^color='
+    line: 'color={{ LND_COLOR }}'
+  notify: server reboot

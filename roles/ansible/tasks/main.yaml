@@ -1,0 +1,17 @@
+---
+- name: "Allow {{ ANSIBLE_USER }} to execute without password"
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: "^{{ ANSIBLE_USER }}" # RegEx to check for state present
+    line: "{{ ANSIBLE_USER }} ALL=(ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
+
+- name: "Add ssh public key for {{ANSIBLE_USER}}"
+  authorized_key:
+    user: "{{ANSIBLE_USER}}"
+    key: "{{ ANSIBLE_USER_PUB }}"
+    state: present
+
+- name: "Delete the password for {{ ANSIBLE_USER }} so they must use ssh pub/private"
+  ansible.builtin.command: "passwd -d {{ ANSIBLE_USER }}"

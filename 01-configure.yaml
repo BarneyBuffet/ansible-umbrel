@@ -1,0 +1,6 @@
+# ansible-playbook 01-configure.yaml -i ./inventory/hosts.ini
+- hosts: umbrel
+  gather_facts: no
+  become: yes
+  roles:
+    - role: configure

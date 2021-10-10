@@ -1,0 +1,5 @@
+ANSIBLE_USER: ansible
+ANSIBLE_USER_PUB: "change me with cat ~/.ssh/id_rsa.pub"
+DOMAIN: local
+LND_ALIAS: "Cool lnd alias name"
+LND_COLOR: "#ba6ba6"
