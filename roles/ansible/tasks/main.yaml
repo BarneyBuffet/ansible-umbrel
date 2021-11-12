@@ -8,7 +8,7 @@
     validate: "visudo -cf %s"
 
 - name: "Add ssh public key for {{ANSIBLE_USER}}"
-  authorized_key:
+  ansible.posix.authorized_key:
     user: "{{ANSIBLE_USER}}"
     key: "{{ ANSIBLE_USER_PUB }}"
     state: present
